@@ -37,7 +37,7 @@ public class DataXJobExample {
      * @return：json文件的内容
      */
     public static String loadJson(){
-        String laststr="";
+        StringBuffer result=new StringBuffer();
         // 打开文件
         BufferedReader reader=null;
         try{
@@ -45,7 +45,7 @@ public class DataXJobExample {
             reader=new BufferedReader(new InputStreamReader(DataXJobExample.class.getResourceAsStream("job.json"),"UTF-8"));
             String tempString=null;
             while((tempString=reader.readLine())!=null){
-                laststr=laststr+tempString;
+                result.append(tempString);
             }
             reader.close();
         }catch(IOException e){
@@ -58,7 +58,7 @@ public class DataXJobExample {
                 }
             }
         }
-        return laststr;
+        return result.toString();
     }
 
 }
