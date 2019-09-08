@@ -1,0 +1,6 @@
+{
+    "name": "kafkawriter",
+    "class": "com.globalegrow.datax.plugin.writer.kafkawriter.KafkaWriter",
+    "description": "异构数据源同步数据到kafka",
+    "developer": "globalegrow-bigdata-ChengJie"
+}

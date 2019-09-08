@@ -1,0 +1,37 @@
+{
+  "name": "kafkawriter",
+  "parameter": {
+    "topic": "test",
+    "acks": "all",
+    "retries": 3,
+    "batchSize": 16384,
+    "lingerMs": 1,
+    "groupId" : "groud-1",
+    "bufferMemory": 33554432,
+    "keySerializer": "org.apache.kafka.common.serialization.StringSerializer",
+    "valueSerializer": "org.apache.kafka.common.serialization.StringSerializer",
+    "bootstrapServers":  "10.40.6.151:9092,10.40.6.152:9092,10.40.6.153:9092",
+    "columns":[
+      {
+        "name":"apiKey",
+        "type":"String"
+      },
+      {
+        "name":"apiName",
+        "type":"String"
+      },
+      {
+        "name":"cacheType",
+        "type":"Integer"
+      },
+      {
+        "name":"createDate",
+        "type":"Date"
+      },
+      {
+        "name":"createUserId",
+        "type":"Long"
+      }
+    ]
+  }
+}

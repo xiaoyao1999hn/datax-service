@@ -1,0 +1,6 @@
+{
+    "name": "hivereader",
+    "class": "com.globalegrow.datax.plugin.reader.hivereader.HiveReader",
+    "description": "jdbc方式读取hive中间的数据",
+    "developer": "globalegrow-bigdata-ChengJie"
+}

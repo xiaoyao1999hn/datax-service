@@ -1,0 +1,6 @@
+{
+    "name": "rabbitmqwriter",
+    "class": "com.globalegrow.datax.plugin.writer.rabbitmqwriter.RabbitmqWriter",
+    "description": "异构数据源同步数据到rabbitmq",
+    "developer": "globalegrow-bigdata-ChengJie"
+}

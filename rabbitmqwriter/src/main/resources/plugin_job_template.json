@@ -1,0 +1,36 @@
+{
+  "name": "rabbitmqwriter",
+  "parameter":{
+    "host":"10.40.6.89",
+    "port":"5672",
+    "username":"ods_test",
+    "password":"ods_test",
+    "exchangeName":"amq.direct",
+    "vhost":"testvhost",
+    "queueName":"odsQueue_test",
+    "routeKey":"odsQueue_test",
+    "publisherConfirms":1,
+    "columns":[
+      {
+        "name":"apiKey",
+        "type":"String"
+      },
+      {
+        "name":"apiName",
+        "type":"String"
+      },
+      {
+        "name":"cacheType",
+        "type":"Integer"
+      },
+      {
+        "name":"createDate",
+        "type":"Date"
+      },
+      {
+        "name":"createUserId",
+        "type":"Long"
+      }
+    ]
+  }
+}
