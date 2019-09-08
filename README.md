@@ -5,36 +5,37 @@
     $ mvn -U clean package assembly:assembly -Dmaven.test.skip=true
     
 #如何启动服务
-运行datax-servicer模块下的App即可
+    运行datax-servicer模块下的App即可
+
 #
 如果有用到nacos则需要加入配置datax-service.yml具体如下
-#
-logging:
-  level:
-    root: debug
-    org.springframework.cloud.gateway.filter.LoadBalancerClientFilter: TRACE
-    log4j.logger.org.springframework.jdbc.core.JdbcTemplate: debug
-    com.alibaba.nacos.client.naming: error
-spring:
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driverClassName: org.apache.derby.jdbc.EmbeddedDriver
-    url: jdbc:derby:${classpath:resource}/datax_metas_db;create=true
-    username: root
-    password: 123456
 
-ribbon:
-  # 同一实例最大重试次数，不包括首次调用
-  MaxAutoRetries: 1
-  # 重试其他实例的最大重试次数，不包括首次所选的server
-  MaxAutoRetriesNextServer: 2
-  # 是否所有操作都进行重试
-  OkToRetryOnAllOperations: false
-
-datax:
-  home: D:/JavaProject/glbg-datax-service/target/datax/datax
-  maxJobCount: 3 
+     logging:
+        level:
+          root: debug
+          org.springframework.cloud.gateway.filter.LoadBalancerClientFilter: TRACE
+          log4j.logger.org.springframework.jdbc.core.JdbcTemplate: debug
+          com.alibaba.nacos.client.naming: error
+      spring:
+        cloud:
+          loadbalancer:
+            retry:
+              enabled: true
+        datasource:
+          type: com.alibaba.druid.pool.DruidDataSource
+          driverClassName: org.apache.derby.jdbc.EmbeddedDriver
+          url: jdbc:derby:${classpath:resource}/datax_metas_db;create=true
+          username: root
+          password: 123456
+      
+      ribbon:
+        # 同一实例最大重试次数，不包括首次调用
+        MaxAutoRetries: 1
+        # 重试其他实例的最大重试次数，不包括首次所选的server
+        MaxAutoRetriesNextServer: 2
+        # 是否所有操作都进行重试
+        OkToRetryOnAllOperations: false
+      
+      datax:
+        home: D:/JavaProject/glbg-datax-service/target/datax/datax
+        maxJobCount: 3 
