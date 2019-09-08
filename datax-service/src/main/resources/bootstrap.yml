@@ -7,19 +7,11 @@ spring:
   cloud:
     nacos:
       discovery:
-#        namespace: 05abc82a-aa56-4a7c-b61f-86eace21987a
-#        server-addr: localhost:8848
         namespace: e6b7afa0-9762-4613-a480-196fe0792188
-#        namespace: 9fd68716-4e76-4846-a6e8-74194eb8f0b3
         server-addr: 10.40.6.251:8848,10.40.6.252:8848,10.40.6.253:8848
-#        server-addr: 10.60.34.11:8848,10.60.34.24:8848,10.60.34.30:8848
       config:
-#        namespace: 05abc82a-aa56-4a7c-b61f-86eace21987a
-#        server-addr: localhost:8848
         namespace: e6b7afa0-9762-4613-a480-196fe0792188
-#        namespace: 9fd68716-4e76-4846-a6e8-74194eb8f0b3
         server-addr: 10.40.6.251:8848,10.40.6.252:8848,10.40.6.253:8848
-#        server-addr: 10.60.34.11:8848,10.60.34.24:8848,10.60.34.30:8848
         file-extension: yml
         group: DEFAULT_GROUP
   jackson:
