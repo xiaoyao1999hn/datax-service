@@ -69,6 +69,7 @@
         <!-- rpc服务-->
         <module>service</module>
         <module>console</module>
+        <module>example</module>
     </modules>
 
     <dependencyManagement>
