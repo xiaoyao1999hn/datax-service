@@ -67,7 +67,8 @@
         <module>plugin-unstructured-storage-util</module>
 
         <!-- rpc服务-->
-        <module>datax-service</module>
+        <module>service</module>
+        <module>console</module>
     </modules>
 
     <dependencyManagement>
