@@ -1,13 +1,10 @@
 package org.datax.console.common.utils;
 
-
-import com.globalegrow.bigdata.bean.DataXColumn;
-import com.globalegrow.bigdata.enums.ValueTypes;
-import com.globalegrow.bigdata.exceptions.DbException;
-import com.globalegrow.bigdata.utils.DbUtils;
-import com.globalegrow.bigdata.utils.datax.DataXUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.enums.ValueTypes;
+import org.datax.console.plugin.DataXColumn;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -99,7 +96,7 @@ public final class HdfsConfigUtils {
             hadoopConfig.put(DEFAULT_FS, defaultFs);
         } catch (SQLException e) {
             log.error("获取hiveConfig配置异常：{}",e);
-            throw new DbException(e);
+            throw GlobalegrowExpcetion.unchecked(e);
         }catch (Exception e){
             e.printStackTrace();
         }finally {

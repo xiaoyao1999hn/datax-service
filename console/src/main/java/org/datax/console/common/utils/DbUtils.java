@@ -1,7 +1,5 @@
 package org.datax.console.common.utils;
 
-import com.globalegrow.bigdata.enums.DbTypeEnum;
-import com.globalegrow.bigdata.exceptions.DbException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +7,8 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.enums.DbTypeEnum;
 
 import java.sql.*;
 import java.util.*;
@@ -38,13 +38,13 @@ public final class DbUtils {
         try {
             Class.forName(dbTypeEnum.getDriverClassName());
         } catch (ClassNotFoundException e) {
-            throw new DbException("not found jdbc driver class", e);
+            throw new GlobalegrowExpcetion("not found jdbc driver class", e);
         }
         try {
             DriverManager.setLoginTimeout(30);
             return DriverManager.getConnection(jdbcUrl, username, password);
         } catch (SQLException e) {
-            throw new DbException("failed to get connection", e);
+            throw new GlobalegrowExpcetion("failed to get connection", e);
         }
     }
 
@@ -89,7 +89,7 @@ public final class DbUtils {
                 columnList.add(new Column(columnName, columnLabel, jdbcType));
             }
         } catch (SQLException e) {
-            throw new DbException(e);
+            throw GlobalegrowExpcetion.unchecked(e);
         } finally {
             closeDbResources(rs, statement, connection);
         }
@@ -111,7 +111,7 @@ public final class DbUtils {
                 tables.add(rs.getString(1));
             }
         } catch (SQLException e) {
-            throw new DbException(e);
+            throw GlobalegrowExpcetion.unchecked(e);
         } finally {
             closeDbResources(rs, statement, connection);
         }
@@ -153,7 +153,7 @@ public final class DbUtils {
         if (split.length >= 2) {
             return split[1];
         }
-        throw new DbException("invalid jdbc url: " + jdbcUrl);
+        throw new GlobalegrowExpcetion("invalid jdbc url: " + jdbcUrl);
     }
 
 

@@ -10,7 +10,7 @@ import java.util.Date;
  * @date 2019/8/24 17:19
  **/
 @Data
-public class OdsPushTaskDO {
+public class DataXPushTaskDO {
 
     /**
      * 主键ID

@@ -2,14 +2,14 @@ package org.datax.console.plugin.writer;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.globalegrow.bigdata.bean.DataXColumn;
-import com.globalegrow.bigdata.domain.ds.config.OdsEsDsConfigDO;
-import com.globalegrow.bigdata.exception.GlobalegrowExpcetion;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.DataXPlugin;
-import com.globalegrow.bigdata.vo.ds.OdsDsVO;
-import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
 import lombok.Getter;
 import lombok.Setter;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.ds.entity.config.EsDsConfig;
+import org.datax.console.ds.vo.DataXDsVO;
+import org.datax.console.plugin.DataXColumn;
+import org.datax.console.plugin.DataXPlugin;
+import org.datax.console.push.vo.DataXPushTaskVO;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
@@ -31,22 +31,21 @@ public class EsWriter extends DataXPlugin {
     private String index;
     private String type;
     private List<DataXColumn> columns;
-    private Boolean cleanUp;
+    private Boolean cleanup;
 
-    public EsWriter(OdsPushTaskVO pushConfig) {
+    public EsWriter(DataXPushTaskVO pushConfig) {
         super(pushConfig);
     }
 
     @Override
-    public void initParams(OdsPushTaskVO pushConfig) {
+    public void initParams(DataXPushTaskVO pushConfig) {
         JSONObject config = JSONObject.parseObject(pushConfig.getConfigContent());
         JSONArray array=config.getJSONArray(Key.COLUMNS);
         if(array!=null){
             setColumns(array.toJavaList(DataXColumn.class));
         }
-        OdsDsVO dsVO = pushConfig.getDsInfo().get(DataXPlugin.Key.WRITER_DS_NAME);
-        dsVO.build();
-        OdsEsDsConfigDO esConfig = (OdsEsDsConfigDO) dsVO.getConfig();
+        DataXDsVO dsVO = pushConfig.getDsInfo().get(DataXPlugin.Key.WRITER_DS_NAME);
+        EsDsConfig esConfig = dsVO.getConfig();
         setName(Key.NAME);
         BeanUtils.copyProperties(esConfig, this);
         setEndpoint("http://" + esConfig.getHost() + ":" + esConfig.getPort());
@@ -56,7 +55,7 @@ public class EsWriter extends DataXPlugin {
     }
 
     @Override
-    protected void checkedConf(OdsPushTaskVO pushConfig) throws GlobalegrowExpcetion {
+    protected void checkedConf(DataXPushTaskVO pushConfig) throws GlobalegrowExpcetion {
 
     }
 

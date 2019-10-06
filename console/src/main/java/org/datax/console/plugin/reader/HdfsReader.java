@@ -1,19 +1,20 @@
 package org.datax.console.plugin.reader;
 
 import com.alibaba.fastjson.JSONObject;
-import com.globalegrow.bigdata.bean.DataXColumn;
-import com.globalegrow.bigdata.domain.ds.config.OdsHiveDsConfigDO;
-import com.globalegrow.bigdata.enums.DbTypeEnum;
-import com.globalegrow.bigdata.exception.GlobalegrowExpcetion;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.DataXPlugin;
-import com.globalegrow.bigdata.ods.admin.push.utils.HiveJdbcUtils;
-import com.globalegrow.bigdata.utils.DbUtils;
-import com.globalegrow.bigdata.utils.hdfs.HdfsConfigUtils;
-import com.globalegrow.bigdata.vo.ds.OdsDsVO;
-import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.common.utils.DbUtils;
+import org.datax.console.common.utils.HdfsConfigUtils;
+import org.datax.console.common.utils.HiveJdbcUtils;
+import org.datax.console.ds.entity.config.HiveDsConfig;
+import org.datax.console.ds.vo.DataXDsVO;
+import org.datax.console.enums.DbTypeEnum;
+import org.datax.console.plugin.DataXColumn;
+import org.datax.console.plugin.DataXPlugin;
+import org.datax.console.push.vo.DataXPushTaskVO;
 import org.springframework.beans.BeanUtils;
 
 import java.sql.Connection;
@@ -82,7 +83,7 @@ public class HdfsReader extends DataXPlugin {
 
     /**
      * 压缩方式
-     * {@link com.globalegrow.bigdata.ods.admin.push.datax.conf.enums.HdfsFileCompressTypeEnum}
+     * {@link org.datax.console.enums.HdfsFileCompressTypeEnum}
      */
     String compress;
 
@@ -91,16 +92,15 @@ public class HdfsReader extends DataXPlugin {
      */
     String nullFormat;
 
-    public HdfsReader(OdsPushTaskVO pushConfig) {
+    public HdfsReader(DataXPushTaskVO pushConfig) {
         super(pushConfig);
     }
 
     @Override
-    protected void initParams(OdsPushTaskVO pushConfig) {
+    protected void initParams(DataXPushTaskVO pushConfig) {
         //初始化jdbc连接，通过hive jdbc set指令获取hadoop的配置信息
-        OdsDsVO dsVO =pushConfig.getDsInfo().get(Key.HDFS_DS);
-        dsVO.build();
-        final OdsHiveDsConfigDO configDO = (OdsHiveDsConfigDO)dsVO.getConfig();
+        DataXDsVO dsVO =pushConfig.getDsInfo().get(Key.HDFS_DS);
+        final HiveDsConfig configDO = dsVO.getConfig();
         Connection connection = DbUtils.getConnection(DbTypeEnum.HIVE2, configDO.getHost(), Integer.parseInt(configDO.getPort()), configDO.getInstanceName(), configDO.getUserName(), configDO.getPassword());
 
         //初始化hadoop配置
@@ -143,7 +143,7 @@ public class HdfsReader extends DataXPlugin {
     }
 
     @Override
-    protected void checkedConf(OdsPushTaskVO pushConfig) throws GlobalegrowExpcetion {
+    protected void checkedConf(DataXPushTaskVO pushConfig) throws GlobalegrowExpcetion {
 
     }
 
@@ -157,7 +157,7 @@ public class HdfsReader extends DataXPlugin {
         hadoopConfig = HdfsConfigUtils.getHiveHadoopConfig(connection, closeConnection);
     }
 
-    private void initColumn(OdsPushTaskVO config, Connection connection, boolean closeConnection) {
+    private void initColumn(DataXPushTaskVO config, Connection connection, boolean closeConnection) {
 
 //        if (columnList == null || columnList.size() <= 0) {
 //            return Collections.emptyList();
@@ -202,7 +202,7 @@ public class HdfsReader extends DataXPlugin {
          */
         final static String COLUMN = "column";
         /**
-         * {@link com.globalegrow.bigdata.enums.hdfs.HdfsFileTypeEnum}
+         * {@link org.datax.console.enums.HdfsFileTypeEnum}
          */
         final static String FILE_TYPE = "fileType";
         /**
@@ -214,7 +214,7 @@ public class HdfsReader extends DataXPlugin {
          */
         final static String FIELD_DELIMITER = "fieldDelimiter";
         /**
-         * {@link com.globalegrow.bigdata.enums.hdfs.HdfsFileCompressTypeEnum}
+         * {@link org.datax.console.enums.HdfsFileCompressTypeEnum}
          */
         final static String COMPRESS = "compress";
 

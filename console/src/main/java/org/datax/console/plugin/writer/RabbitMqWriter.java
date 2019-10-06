@@ -2,14 +2,14 @@ package org.datax.console.plugin.writer;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.globalegrow.bigdata.bean.DataXColumn;
-import com.globalegrow.bigdata.domain.ds.config.OdsRabbitMQDsConfigDO;
-import com.globalegrow.bigdata.exception.GlobalegrowExpcetion;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.DataXPlugin;
-import com.globalegrow.bigdata.vo.ds.OdsDsVO;
-import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
 import lombok.Getter;
 import lombok.Setter;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.ds.entity.config.RabbitMQDsConfig;
+import org.datax.console.ds.vo.DataXDsVO;
+import org.datax.console.plugin.DataXColumn;
+import org.datax.console.plugin.DataXPlugin;
+import org.datax.console.push.vo.DataXPushTaskVO;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
@@ -80,16 +80,15 @@ public class RabbitMqWriter extends DataXPlugin {
 
     List<DataXColumn> column;
 
-    public RabbitMqWriter(OdsPushTaskVO pushConfig) {
+    public RabbitMqWriter(DataXPushTaskVO pushConfig) {
         super(pushConfig);
     }
 
 
     @Override
-    public void initParams(OdsPushTaskVO pushConfig) {
-        OdsDsVO dsVO = pushConfig.getDsInfo().get(DataXPlugin.Key.WRITER_DS_NAME);
-        dsVO.build();
-        OdsRabbitMQDsConfigDO dsConfigDO=(OdsRabbitMQDsConfigDO)dsVO.getConfig();
+    public void initParams(DataXPushTaskVO pushConfig) {
+        DataXDsVO dsVO = pushConfig.getDsInfo().get(DataXPlugin.Key.WRITER_DS_NAME);
+        RabbitMQDsConfig dsConfigDO=dsVO.getConfig();
         BeanUtils.copyProperties(dsConfigDO,this);
         JSONObject config = JSONObject.parseObject(pushConfig.getConfigContent());
         JSONArray array=config.getJSONArray(Key.COLUMNS);
@@ -100,7 +99,7 @@ public class RabbitMqWriter extends DataXPlugin {
     }
 
     @Override
-    protected void checkedConf(OdsPushTaskVO pushConfig) throws GlobalegrowExpcetion {
+    protected void checkedConf(DataXPushTaskVO pushConfig) throws GlobalegrowExpcetion {
 
     }
 

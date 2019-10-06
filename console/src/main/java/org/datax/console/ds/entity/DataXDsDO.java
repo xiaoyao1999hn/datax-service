@@ -1,9 +1,7 @@
 package org.datax.console.ds.entity;
 
 import lombok.Data;
-import org.datax.console.entity.BaseEntity;
-
-import javax.validation.constraints.NotNull;
+import org.datax.console.base.entity.BaseDO;
 
 /**
  * 数据源实体类
@@ -12,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * @date 2019/5/6 20:08
  **/
 @Data
-public class DataXDs  extends BaseEntity {
+public class DataXDsDO extends BaseDO {
 
     /**
      * 主键Id
@@ -48,11 +46,5 @@ public class DataXDs  extends BaseEntity {
      * 数据源类型：0-MYSQL, 1-ORACLE, 2-ES, 3-HIVE, 4-PRESTO,5-RABBITMQ，6-KAFKA，7-Hbase;
      */
     private Integer type;
-
-    /**
-     * 所属机房区域：1-科兴,2-AWS,3-softlayer
-     */
-    @NotNull(message = "机房不能为空")
-    private Integer zone;
 
 }

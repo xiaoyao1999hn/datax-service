@@ -1,13 +1,13 @@
 package org.datax.console.plugin.reader;
 
-import com.globalegrow.bigdata.domain.ds.config.OdsRdbmsDsConfigDO;
-import com.globalegrow.bigdata.exception.GlobalegrowExpcetion;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.DataXPlugin;
-import com.globalegrow.bigdata.vo.ds.OdsDsVO;
-import com.globalegrow.bigdata.vo.push.config.ConnConfigVO;
-import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
 import lombok.Getter;
 import lombok.Setter;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.ds.entity.config.RdbmsDsConfig;
+import org.datax.console.ds.vo.ConnConfigVO;
+import org.datax.console.ds.vo.DataXDsVO;
+import org.datax.console.plugin.DataXPlugin;
+import org.datax.console.push.vo.DataXPushTaskVO;
 
 import java.util.List;
 
@@ -45,26 +45,22 @@ public class MysqlReader extends DataXPlugin {
      */
     private List<String> columns;
 
-    public MysqlReader(OdsPushTaskVO pushConfig) {
+    public MysqlReader(DataXPushTaskVO pushConfig) {
         super(pushConfig);
     }
 
     @Override
-    protected void initParams(OdsPushTaskVO pushConfig) {
-        OdsDsVO odsDsVO=pushConfig.getDsInfo().get(DataXPlugin.Key.READER_DS_NAME);
-        odsDsVO.build();
-
-        OdsRdbmsDsConfigDO dsConfigDO= (OdsRdbmsDsConfigDO) odsDsVO.getConfig();
-
+    protected void initParams(DataXPushTaskVO pushConfig) {
+        DataXDsVO odsDsVO=pushConfig.getDsInfo().get(DataXPlugin.Key.READER_DS_NAME);
+        RdbmsDsConfig dsConfigDO= odsDsVO.getConfig();
         setName(Key.NAME);
         setUsername(dsConfigDO.getUserName());
         setPassword(dsConfigDO.getPassword());
         setWhere(pushConfig.getRemark());
-//        setColumns(pushConfig.get);
     }
 
     @Override
-    protected void checkedConf(OdsPushTaskVO pushConfig) throws GlobalegrowExpcetion {
+    protected void checkedConf(DataXPushTaskVO pushConfig) throws GlobalegrowExpcetion {
 
     }
 

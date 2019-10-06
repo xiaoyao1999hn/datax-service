@@ -1,17 +1,16 @@
 package org.datax.console.plugin;
 
 import com.alibaba.fastjson.JSONObject;
-import com.globalegrow.bigdata.enums.DataSourceType;
-import com.globalegrow.bigdata.exception.GlobalegrowExpcetion;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.reader.HdfsReader;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.reader.HiveReader;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.reader.MysqlReader;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.reader.TagBitmapReader;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.writer.EsWriter;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.writer.RabbitMqWriter;
-import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
 import lombok.Getter;
 import lombok.Setter;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.enums.DataSourceType;
+import org.datax.console.plugin.reader.HdfsReader;
+import org.datax.console.plugin.reader.HiveReader;
+import org.datax.console.plugin.reader.MysqlReader;
+import org.datax.console.plugin.writer.EsWriter;
+import org.datax.console.plugin.writer.RabbitMqWriter;
+import org.datax.console.push.vo.DataXPushTaskVO;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -34,7 +33,7 @@ public abstract class DataXPlugin {
      */
     private JSONObject parameter =new JSONObject();
 
-    public DataXPlugin(OdsPushTaskVO pushConfig){
+    public DataXPlugin(DataXPushTaskVO pushConfig){
         checkedConf(pushConfig);
         initParams(pushConfig);
         createConf(this);
@@ -56,7 +55,7 @@ public abstract class DataXPlugin {
      * 初始化
      * @param pushConfig
      */
-    protected abstract void initParams(OdsPushTaskVO pushConfig);
+    protected abstract void initParams(DataXPushTaskVO pushConfig);
 
 
     public JSONObject addConf(String key, Object value){
@@ -88,10 +87,10 @@ public abstract class DataXPlugin {
      * @param pushConfig
      * @throws GlobalegrowExpcetion
      */
-    protected abstract void checkedConf(OdsPushTaskVO pushConfig) throws GlobalegrowExpcetion;
+    protected abstract void checkedConf(DataXPushTaskVO pushConfig) throws GlobalegrowExpcetion;
 
 
-    public static DataXPlugin createReader(OdsPushTaskVO pushTask){
+    public static DataXPlugin createReader(DataXPushTaskVO pushTask){
         switch (DataSourceType.fromType(pushTask.getReaderType())){
             case MYSQL: return new MysqlReader(pushTask);
 //            case ORACLE: return new OracleRead();
@@ -102,12 +101,11 @@ public abstract class DataXPlugin {
 //            case KAFKA: return new KafkaReader();
 //            case HBASE: return new HBaseReader();
             case HDFS: return new HdfsReader(pushTask);
-            case TAG_BITMAP: return new TagBitmapReader(pushTask);
         }
         return null;
     }
 
-    public static DataXPlugin createWriter(OdsPushTaskVO pushTask){
+    public static DataXPlugin createWriter(DataXPushTaskVO pushTask){
         switch (DataSourceType.fromType(pushTask.getWriterType())){
 //            case MYSQL: return new MysqlWriter();
 //            case ORACLE: return new OracleWriter();

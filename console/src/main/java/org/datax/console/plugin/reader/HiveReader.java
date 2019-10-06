@@ -1,8 +1,8 @@
 package org.datax.console.plugin.reader;
 
-import com.globalegrow.bigdata.exception.GlobalegrowExpcetion;
-import com.globalegrow.bigdata.ods.admin.push.datax.plugin.DataXPlugin;
-import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
+import org.datax.console.common.exceptions.GlobalegrowExpcetion;
+import org.datax.console.plugin.DataXPlugin;
+import org.datax.console.push.vo.DataXPushTaskVO;
 
 /**
  * @author ChengJie
@@ -11,17 +11,17 @@ import com.globalegrow.bigdata.vo.push.config.OdsPushTaskVO;
  **/
 public class HiveReader extends DataXPlugin {
 
-    public HiveReader(OdsPushTaskVO pushConfig) {
+    public HiveReader(DataXPushTaskVO pushConfig) {
         super(pushConfig);
     }
 
     @Override
-    protected void initParams(OdsPushTaskVO pushConfig) {
+    protected void initParams(DataXPushTaskVO pushConfig) {
 
     }
 
     @Override
-    protected void checkedConf(OdsPushTaskVO pushConfig) throws GlobalegrowExpcetion {
+    protected void checkedConf(DataXPushTaskVO pushConfig) throws GlobalegrowExpcetion {
 
     }
 }

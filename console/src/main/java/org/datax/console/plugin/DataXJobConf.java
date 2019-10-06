@@ -37,7 +37,7 @@ public class DataXJobConf {
     public static String buildDefault(DataXPlugin reader,DataXPlugin writer){
         List<DataXContent> list = new ArrayList<>();
         list.add(DataXContent.defaultCreate(reader,writer));
-        return build(list, DataXSetting.defaultCreate());
+        return build(list,DataXSetting.defaultCreate());
     }
 
     public static DataXJobConf createJobConf(){
