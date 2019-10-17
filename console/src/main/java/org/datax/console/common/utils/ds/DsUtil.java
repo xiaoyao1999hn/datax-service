@@ -1,5 +1,6 @@
 package org.datax.console.common.utils.ds;
 import org.datax.console.ds.vo.DataXDsVO;
+import org.datax.console.plugin.DataXColumn;
 
 import java.util.List;
 /**
@@ -21,4 +22,12 @@ public interface DsUtil {
      * @return
      */
     List<String> getTables(DataXDsVO ds);
+
+    /**
+     * 获取数据源列信息
+     * @param ds        数据源信息
+     * @param tableName  如果是数据库则只传表名即可，如果是es需要传入2个值索引名和类型名
+     * @return
+     */
+    List<DataXColumn> getColumns(DataXDsVO ds,String ...tableName);
 }

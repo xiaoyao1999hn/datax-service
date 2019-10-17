@@ -5,7 +5,9 @@ import org.datax.console.common.exceptions.GlobalegrowExpcetion;
 import org.datax.console.common.utils.DbUtils;
 import org.datax.console.ds.entity.config.RdbmsDsConfig;
 import org.datax.console.ds.vo.DataXDsVO;
-import org.datax.console.enums.DataSourceType;
+import org.datax.console.base.enums.DataSourceType;
+import org.datax.console.plugin.DataXColumn;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -185,6 +187,11 @@ public class RdbmsDsUtil implements DsUtil{
         } finally {
             DbUtils.closeDbResources(stmt, con);
         }
+    }
+
+    @Override
+    public List<DataXColumn> getColumns(DataXDsVO ds, String... tableName) {
+        return null;
     }
 
     private static class   RdbmsDsUtilHandler{

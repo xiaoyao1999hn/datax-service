@@ -1,4 +1,4 @@
-package org.datax.console.enums;
+package org.datax.console.base.enums;
 
 /**
  * 授权模式：0-一级模式，1-组长模式，2-自定义模式

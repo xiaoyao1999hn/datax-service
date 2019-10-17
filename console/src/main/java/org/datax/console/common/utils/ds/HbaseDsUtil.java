@@ -1,6 +1,7 @@
 package org.datax.console.common.utils.ds;
 
 import org.datax.console.ds.vo.DataXDsVO;
+import org.datax.console.plugin.DataXColumn;
 
 import java.util.List;
 
@@ -19,4 +20,10 @@ public class HbaseDsUtil implements DsUtil {
     public List<String> getTables(DataXDsVO ds) {
         return null;
     }
+
+    @Override
+    public List<DataXColumn> getColumns(DataXDsVO ds, String... tableName) {
+        return null;
+    }
+
 }

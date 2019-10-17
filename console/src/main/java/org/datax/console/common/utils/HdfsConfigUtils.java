@@ -3,7 +3,7 @@ package org.datax.console.common.utils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.datax.console.common.exceptions.GlobalegrowExpcetion;
-import org.datax.console.enums.ValueTypes;
+import org.datax.console.base.enums.ValueTypes;
 import org.datax.console.plugin.DataXColumn;
 
 import java.sql.Connection;

@@ -9,8 +9,8 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.datax.console.common.exceptions.GlobalegrowExpcetion;
-import org.datax.console.enums.HdfsFileCompressTypeEnum;
-import org.datax.console.enums.HdfsFileTypeEnum;
+import org.datax.console.base.enums.HdfsFileCompressTypeEnum;
+import org.datax.console.base.enums.HdfsFileTypeEnum;
 import org.datax.console.plugin.DataXColumn;
 import org.javatuples.Pair;
 

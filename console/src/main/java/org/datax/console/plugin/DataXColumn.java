@@ -30,4 +30,8 @@ public class DataXColumn {
 
     private String name;
 
+    public DataXColumn(String name,String value){
+        this.name=name;
+        this.value=value;
+    }
 }

@@ -1,4 +1,4 @@
-package org.datax.console.enums;
+package org.datax.console.base.enums;
 
 import lombok.Getter;
 
