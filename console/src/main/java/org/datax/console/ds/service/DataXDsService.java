@@ -1,4 +1,5 @@
 package org.datax.console.ds.service;
+import org.datax.console.base.enums.DataSourceType;
 import org.datax.console.base.service.AbstractService;
 import org.datax.console.common.utils.ds.DsUtil;
 import org.datax.console.ds.vo.DataXDsVO;
@@ -32,7 +33,7 @@ public interface DataXDsService extends AbstractService<DataXDsVO> {
      * @param type
      * @return
      */
-    DsUtil chooseDsUtil(Integer type);
+    DsUtil chooseDsUtil(DataSourceType type);
 
     /**
      * 获取数据源下的表信息

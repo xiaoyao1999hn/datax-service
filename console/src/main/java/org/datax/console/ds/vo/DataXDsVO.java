@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.datax.console.ds.entity.DataXDsDO;
-import org.datax.console.enums.DataSourceType;
+import org.datax.console.base.enums.DataSourceType;
 import java.util.Arrays;
 
 /**

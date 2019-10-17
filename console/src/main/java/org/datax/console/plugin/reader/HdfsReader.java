@@ -2,7 +2,6 @@ package org.datax.console.plugin.reader;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.datax.console.common.exceptions.GlobalegrowExpcetion;
@@ -11,7 +10,7 @@ import org.datax.console.common.utils.HdfsConfigUtils;
 import org.datax.console.common.utils.HiveJdbcUtils;
 import org.datax.console.ds.entity.config.HiveDsConfig;
 import org.datax.console.ds.vo.DataXDsVO;
-import org.datax.console.enums.DbTypeEnum;
+import org.datax.console.base.enums.DbTypeEnum;
 import org.datax.console.plugin.DataXColumn;
 import org.datax.console.plugin.DataXPlugin;
 import org.datax.console.push.vo.DataXPushTaskVO;
@@ -83,7 +82,7 @@ public class HdfsReader extends DataXPlugin {
 
     /**
      * 压缩方式
-     * {@link org.datax.console.enums.HdfsFileCompressTypeEnum}
+     * {@link org.datax.console.base.enums.HdfsFileCompressTypeEnum}
      */
     String compress;
 
@@ -202,7 +201,7 @@ public class HdfsReader extends DataXPlugin {
          */
         final static String COLUMN = "column";
         /**
-         * {@link org.datax.console.enums.HdfsFileTypeEnum}
+         * {@link org.datax.console.base.enums.HdfsFileTypeEnum}
          */
         final static String FILE_TYPE = "fileType";
         /**
@@ -214,7 +213,7 @@ public class HdfsReader extends DataXPlugin {
          */
         final static String FIELD_DELIMITER = "fieldDelimiter";
         /**
-         * {@link org.datax.console.enums.HdfsFileCompressTypeEnum}
+         * {@link org.datax.console.base.enums.HdfsFileCompressTypeEnum}
          */
         final static String COMPRESS = "compress";
 

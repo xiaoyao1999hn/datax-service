@@ -1,7 +1,7 @@
-package org.datax.console.enums;
+package org.datax.console.base.enums;
 
-import com.globalegrow.bigdata.domain.bitmap.TagBitMapDO;
-import com.globalegrow.bigdata.domain.ds.config.*;
+
+import org.datax.console.ds.entity.config.*;
 
 import java.util.Arrays;
 
@@ -12,16 +12,15 @@ import java.util.Arrays;
 public enum DataSourceType {
 
     //小于50的均为常见数据源
-    MYSQL(0, "mysql",OdsRdbmsDsConfigDO.class),
-    ORACLE(1, "oracle",OdsRdbmsDsConfigDO.class),
-    ES(2, "es",OdsEsDsConfigDO.class,"/es"),
-    HIVE(3, "hive",OdsHiveDsConfigDO.class),
-    PRESTO(4, "presto",OdsPrestoDsConfigDO.class),
-    RABBITMQ(5,"rabbitmq",OdsRabbitMQDsConfigDO.class),
-    KAFKA(6,"kafka",OdsKafkaDsConfigDO.class),
-    HBASE(7,"hbase",OdsHbaseDsConfigDO.class),
-    HDFS(8,"hdfs",OdsHdfsDsConfigDO.class),
-    ;
+    MYSQL(0, "mysql",RdbmsDsConfig.class),
+    ORACLE(1, "oracle",RdbmsDsConfig.class),
+    ES(2, "es",EsDsConfig.class),
+    HIVE(3, "hive",HiveDsConfig.class),
+    PRESTO(4, "presto",PrestoDsConfig.class),
+    RABBITMQ(5,"rabbitmq",RabbitMQDsConfig.class),
+    KAFKA(6,"kafka",KafkaDsConfig.class),
+    HBASE(7,"hbase",HbaseDsConfig.class),
+    HDFS(8,"hdfs",HdfsDsConfig.class);
     Integer type;
     String description;
     Class configClass;

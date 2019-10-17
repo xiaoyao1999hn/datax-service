@@ -1,4 +1,4 @@
-package org.datax.console.enums;
+package org.datax.console.base.enums;
 
 import java.sql.JDBCType;
 import java.util.Arrays;

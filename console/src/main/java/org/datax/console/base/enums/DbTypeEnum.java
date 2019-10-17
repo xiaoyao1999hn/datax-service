@@ -1,4 +1,4 @@
-package org.datax.console.enums;
+package org.datax.console.base.enums;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;

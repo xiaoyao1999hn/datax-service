@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 import org.datax.console.common.exceptions.GlobalegrowExpcetion;
-import org.datax.console.enums.DbTypeEnum;
+import org.datax.console.base.enums.DbTypeEnum;
 
 import java.sql.*;
 import java.util.*;

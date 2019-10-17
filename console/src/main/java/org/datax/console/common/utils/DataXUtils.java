@@ -2,7 +2,7 @@ package org.datax.console.common.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import org.datax.console.common.exceptions.GlobalegrowExpcetion;
-import org.datax.console.enums.ValueTypes;
+import org.datax.console.base.enums.ValueTypes;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;

@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.Getter;
 import lombok.Setter;
 import org.datax.console.common.exceptions.GlobalegrowExpcetion;
-import org.datax.console.enums.DataSourceType;
+import org.datax.console.base.enums.DataSourceType;
 import org.datax.console.plugin.reader.HdfsReader;
 import org.datax.console.plugin.reader.HiveReader;
 import org.datax.console.plugin.reader.MysqlReader;
