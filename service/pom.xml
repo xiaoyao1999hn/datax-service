@@ -21,7 +21,7 @@
         <nacos.version>1.0.0</nacos.version>
         <derby.version>10.14.2.0</derby.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <logback.version>1.2.3</logback.version>
+        <logback.version>1.2.0</logback.version>
         <okhttp.version>3.12.1</okhttp.version>
     </properties>
 
